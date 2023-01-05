@@ -2,10 +2,14 @@
 Small program with a simple GUI to change meta data of pictures
 
 ## Idea
-Smartphone pictures send with messenger apps usually influence meta data. This makes it duiffcult to sort them in the right order. 
+Smartphone pictures send with messenger apps usually influence meta data. This makes it difficult to sort them in the right order. 
 *PictureSort* will help to change meta data and sort it naturally on the file system. 
 
 The advantage: The pictures can be viewed ordered and the order is independet of software organizing pictures.
+
+## Influenced meta data
+The modified date is used as a sort criterium.
+The time stamp of the first selected picture is used as reference and every preceeding picture gets added one more second to the reference time stamp.  
 
 ## Usage
 ![PictureSort Screenshot](/img/ps.png "PictureSort Screenshot")
@@ -21,7 +25,7 @@ Sorting pictures with PictureSort happens in three steps:
 - [PyQt5](https://pypi.org/project/PyQt5/5.6/ "PyQt5")
 
 ## Binary Build Procedure
-Currently binaries are available for *Linux* and *Windows*.
+Currently binaries are available for *Linux* and *Windows 10*.
 They are created separately on each plattform with [pyinstaller](https://pypi.org/project/pyinstaller/ "pyinstaller").
 <table>
      <tr>
@@ -32,7 +36,7 @@ They are created separately on each plattform with [pyinstaller](https://pypi.or
      <tr>
           <td>PictureSort-1.0-win.zip</td>
           <td>816cd15104039bcd03b1ea17db98f3edad0ac9e94e1aef370dc1da00e1681b9c</td>
-          <td>Windows</td>
+          <td>Windows 10</td>
      </tr>
      <tr>
           <td>PictureSort-1.0-linux.tar.gz</td>
