@@ -1,7 +1,7 @@
 import sys, os, glob, math, time
 from collections import namedtuple
 from PyQt5 import QtCore, QtWidgets, QtSvg
-from PyQt5.QtWidgets import QMainWindow, QLabel, QGridLayout, QWidget, QFileDialog, QPushButton, QApplication, QTableView, QStyledItemDelegate, QStackedLayout, QDialog
+from PyQt5.QtWidgets import QMainWindow, QLabel, QGridLayout, QWidget, QFileDialog, QPushButton, QApplication, QTableView, QStyledItemDelegate, QStackedLayout, QDialog, QToolBar
 from PyQt5.QtGui import QImage, QPixmap, QIcon, QBrush, QColor, QMouseEvent
 from PyQt5.QtCore import QSize, Qt, QAbstractTableModel, QEvent, QItemSelectionModel
 
@@ -108,6 +108,7 @@ class MainWindow(QMainWindow):
 
         self.view.setStyleSheet("MyTableView{\
                                     background-color: gray;\
+                                    margin: 60px;\
                                  }\
                                  MyTableView::item:selected{\
                                     background-color: #adb7e6;\
@@ -139,7 +140,10 @@ class MainWindow(QMainWindow):
         self.view.resizeRowsToContents()
         self.view.resizeColumnsToContents()
 
-        exitbutton = QPushButton('Exit Sort View', self.view)
+        tbar = QToolBar('titletitle', self.view)
+        tbar.resize(100,32)
+        
+        exitbutton = QPushButton('Exit Sort View', tbar)
         exitbutton.clicked.connect(self.exitMethod)
         exitbutton.resize(100, 32)
         exitbutton.move(0, 0)
@@ -167,6 +171,10 @@ class MainWindow(QMainWindow):
         self.checkmarkIcon2.hide()
         self.checkmarkIcon3.hide()
 
+        # clean up
+        self.view.clearFileList()
+        self.model.clearPreview()
+
     def exitMethod(self):
         # show main window again
         self.finishbutton.setEnabled(True)
@@ -186,7 +194,7 @@ class MainWindow(QMainWindow):
         helpDiag.setGeometry(500,500,400,200)
         text = QLabel(helpDiag)
         text.setText('\
-PictureSort is a small application and changes the modification date of pictures to sort in your wished order.\n\
+PictureSort is a small application and changes the modification date of pictures to sort it in your wished order.\n\
 1. Select the folder where your .jpgs are.\n\
 2. Choose your order: \n\
 \tLeft click adds the picture to you selection following order of clicks.\n\
@@ -226,6 +234,7 @@ class PreviewDelegate(QStyledItemDelegate):
 
         #self.initStyleOption(option, index)
         painter.drawImage(option.rect.x() + int(x), option.rect.y() + int(y), scaled)
+
         
     def sizeHint(self, option, index):
         # All items the same size.
@@ -278,6 +287,8 @@ class PreviewModel(QAbstractTableModel):
         n_items = len(self.previews)
         return math.ceil(n_items / NUMBER_OF_COLUMNS)
 
+    def clearPreview(self):
+        self.previews = []
 ###
 ### inheriting from QTableView --------------------------------------------------------------------
 ###
@@ -315,9 +326,12 @@ class MyTableView(QTableView):
 
     def addFileList(self, fn):
         self.fileList.append(fn)
-
+        
     def exportCurrentOrder(self):
         return self.currentOrder
+
+    def clearFileList(self):
+        self.fileList = []
                 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
