@@ -181,13 +181,15 @@ class MainWindow(QMainWindow):
         self.stack.setCurrentIndex(0)
 
     def writeMetaData(self, newOrder):
-        startTime = os.path.getmtime(newOrder[0])
-        i = 0
-        while(i < len(newOrder)):
-            os.utime(newOrder[i], (time.time(), startTime + i*60))
-            print(str(startTime+i))
-            i = i + 1
-        i = 0
+        if len(newOrder) > 0:
+            startTime = os.path.getmtime(newOrder[0])
+            i = 0
+            while(i < len(newOrder)):
+                os.utime(newOrder[i], (time.time(), startTime + i*60))
+                print(str(startTime+i))
+                i = i + 1
+                i = 0
+        
     def showHelp(self):
         helpDiag = QDialog(self)
         helpDiag.setWindowTitle('Picture Sort - Help')
@@ -332,6 +334,8 @@ class MyTableView(QTableView):
 
     def clearFileList(self):
         self.fileList = []
+        self.currentOrder = []
+        self.clearSelection()
                 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
