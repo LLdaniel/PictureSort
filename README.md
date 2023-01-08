@@ -43,6 +43,16 @@ They are created separately on each plattform with [pyinstaller](https://pypi.or
           <td>978469a2ff00c1294500eac6fb5511bc0eb23e072e037608865177b53e43c21b</td>
           <td>Linux</td>
      </tr>
+     <tr>
+          <td>PictureSort-1.1-win.zip</td>
+          <td>cedaf5d8689bec3d4ad3902139ea244c156dcffdc5f456b8cf6ebc27ab3e34b4</td>
+          <td>Windows 10</td>
+     </tr>
+     <tr>
+          <td>PictureSort-1.1-linux.tar.gz</td>
+          <td>6f9ec9ad0b93103c3f2107a312d27c61ba14836907f18c8d5301b31d6c361599</td>
+          <td>Linux</td>
+     </tr>
 </table>
 
 
@@ -50,5 +60,5 @@ They are created separately on each plattform with [pyinstaller](https://pypi.or
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
-**Icons**
+#### Icons
 Icons from [ionicons](https://github.com/ionic-team/ionicons "ionicons")
