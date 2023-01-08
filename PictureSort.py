@@ -188,7 +188,7 @@ class MainWindow(QMainWindow):
                 os.utime(newOrder[i], (time.time(), startTime + i*60))
                 print(str(startTime+i))
                 i = i + 1
-                i = 0
+            i = 0
         
     def showHelp(self):
         helpDiag = QDialog(self)
