@@ -49,6 +49,11 @@ They are created separately on each plattform with [pyinstaller](https://pypi.or
           <td>Windows 10</td>
      </tr>
      <tr>
+          <td>PictureSort-1.1-win11.zip</td>
+          <td>b3fedec5d67554d3f7df24b43866a2dc6dd7a38be02cf42197c1aee14ddb2a4a</td>
+          <td>Windows 11</td>
+     </tr>
+     <tr>
           <td>PictureSort-1.1-linux.tar.gz</td>
           <td>6f9ec9ad0b93103c3f2107a312d27c61ba14836907f18c8d5301b31d6c361599</td>
           <td>Linux</td>
